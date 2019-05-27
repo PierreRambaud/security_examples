@@ -25,7 +25,9 @@
           <tr>
             <th scope="row">{{ loop.index }}</th>
             <td>{{file.filename}}</td>
-            <td><a href={{ path('security_examples_lfi_download', {file: file.relativePathName}) }}>Download</td>
+            <td>
+              <a href={{ path('security_examples_lfi_download', {file: file.relativePathName}) }}>Download</a>
+            </td>
           </tr>
         {% endfor %}
       </tbody>

@@ -1,22 +1,53 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% block content %}
-  <form action="{{ path('security_examples_xss') }}" method="POST">
+  <form action="{{ path('security_examples_xss') }}" method="GET">
     <div class="form-group">
-      <label for="customer-id">Customer id</label>
-      <input type="text" class="form-control" id="customer-id" aria-describedby="customer_id_help" placeholder="Customer id" name="customer_id">
-      <small id="customer_id_help" class="form-text text-muted">Find a customer by its id.</small>
+      <label for="date-from">Date from</label>
+			<input type="text" class="datepicker input-medium" name="date-from" id="date-from" />
+    </div>
+    <div class="form-group">
+      <label for="date-from">Date To</label>
+			<input type="text" class="datepicker input-medium" name="date-to" id="date-to" />
     </div>
 
     <button type="submit" class="btn btn-primary">Find</button>
   </form>
 
-  {% if customer is not empty %}
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ customer.lastname }} {{ customer.firstname }}</h5>
-        <p class="card-text">{{ customer.email }}</p>
-      </div>
-    </div>
+  {% if orders is not empty %}
+    <p>{{ ('Date from <strong>' ~ dateFrom ~ '</strong> to <strong>' ~ dateTo ~ '</strong>') | raw }}</p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Reference</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <th scope="row">{{ order.id_order }}</th>
+            <td>{{ order.reference }}</td>
+            <td>{{ order.date_add }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <script>
+    $(document).ready(function() {
+      /** Attach date picker */
+      $('.datepicker').datetimepicker({
+        locale: 'en',
+        format: 'YYYY-MM-DD'
+      });
+    });
+  </script>
 {% endblock %}

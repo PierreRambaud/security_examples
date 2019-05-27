@@ -1,16 +1,6 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% block content %}
-  <form action="{{ path('security_examples_lfi') }}" method="POST">
-    <div class="form-group">
-      <label for="customer-id">Customer id</laœbel>
-        <input type="text" class="form-control" id="customer-id" aria-describedby="customer_id_help" placeholder="Customer id" name="customer_id">
-        <small id="customer_id_help" class="form-text text-muted">Find a customer by its id.</small>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Find</button>
-  </form>
-
   {% if finder is not empty %}
     <table class="table">
       <thead>

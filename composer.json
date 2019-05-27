@@ -1,0 +1,17 @@
+{
+  "name": "prestashop/security_examples",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pierre RAMBAUD",
+      "email": "pierre.rambaud@prestashop.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "SecurityExamples\\": "src/"
+    }
+  }
+}

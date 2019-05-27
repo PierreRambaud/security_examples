@@ -1,0 +1,32 @@
+
+security_examples_sqli:
+  path: security-examples/sqli
+  methods: [GET]
+  defaults:
+    _controller: 'SecurityExamples\Controller\SQLiController::indexAction'
+    _legacy_controller: AdminSecurityExamplesSQLi
+    _legacy_link: AdminSecurityExamplesSQLi
+
+security_examples_rce:
+  path: security-examples/rce
+  methods: [GET]
+  defaults:
+    _controller: 'SecurityExamples\Controller\RceController::indexAction'
+    _legacy_controller: AdminSecurityExamplesRce
+    _legacy_link: AdminSecurityExamplesRce
+
+security_examples_xss:
+  path: security-examples/xss
+  methods: [GET]
+  defaults:
+    _controller: 'SecurityExamples\Controller\XssController::indexAction'
+    _legacy_controller: AdminSecurityExamplesXss
+    _legacy_link: AdminSecurityExamplesXss
+
+security_examples_lfi:
+  path: security-examples/lfi
+  methods: [GET]
+  defaults:
+    _controller: 'SecurityExamples\Controller\LfiController::indexAction'
+    _legacy_controller: AdminSecurityExamplesLfi
+    _legacy_link: AdminSecurityExamplesLfi

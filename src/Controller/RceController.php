@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RceController extends FrameworkBundleAdminController
 {
-    // exploit http://ps-develop.localhost/admin-dev/index.php/modules/security-examples/rce/command?type=router;whoami
     public function indexAction(Request $request)
     {
         $output = null;
@@ -17,13 +16,22 @@ class RceController extends FrameworkBundleAdminController
         if (!empty($type)) {
             $process = new Process(
                 sprintf(
-                    '%s %s/../bin/console debug:%s',
-                    PHP_BINARY,
+                    '%s/../bin/console debug:%s',
                     $this->getParameter('kernel.root_dir'),
                     $type
                 )
             );
             $process->run();
+
+            // Use automatic escape from process, or something like escapeshellarg
+            // $process = new Process(
+            //     [
+            //         $this->getParameter('kernel.root_dir') . '/../bin/console',
+            //         'debug:' . $type
+            //     ]
+            // );
+            // $process->run();
+
             if (!$process->isSuccessful()) {
                 throw new ProcessFailedException($process);
             }

@@ -17,20 +17,18 @@ class LfiController extends FrameworkBundleAdminController
 
         return $this->render(
             '@Modules/security_examples/templates/admin/lfi.html.twig',
-            ['finder' => $finder],
+            ['finder' => $finder]
         );
     }
 
     public function downloadAction(Request $request)
     {
-        // Exploit http://ps-develop.localhost/admin-dev/index.php/modules/security-examples/lfi/download?file=../config/defines.inc.php
         $filename = $request->query->get('file');
         return $this->file(
             $this->getDirectoryPath() .
             $filename
         );
     }
-
 
     private function getDirectorypath()
     {

@@ -13,13 +13,17 @@ class XssController extends FrameworkBundleAdminController
      * Don't forget to disable xss protection
      *
      * Header set X-XSS-Protection 0
-     * http://ps-develop.localhost/admin-dev/index.php/modules/security-examples/xss?date-from=2018-10-08&date-to=2019-05-28%3Cscript%3Ealert(true);%3C/script%3E
      */
     public function indexAction(Request $request)
     {
         $orders = [];
         $dateFrom = $request->query->get('date-from');
         $dateTo = $request->query->get('date-to');
+
+        // Always care about user data
+        // $dateFrom = date('Y-m-d', strtotime($request->query->get('date-from')));
+        // $dateTo = date('Y-m-d', strtotime($request->query->get('date-to')));
+
         if (!empty($dateFrom) && !empty($dateTo)) {
             try {
                 $orders = Db::getInstance()->executeS(

@@ -21,7 +21,7 @@ class SQLiController extends FrameworkBundleAdminController
                 );
                 // Fix, use cast
                 // $customer = Db::getInstance()->executeS(
-                //     'SELECT * FROM ' . _DB_PREFIX_ . 'customer WHERE id_customer = ' . $customer_id
+                //     'SELECT * FROM ' . _DB_PREFIX_ . 'customer WHERE id_customer = ' . (int) $customer_id
                 // );
             } catch (PrestaShopDatabaseException $e) {
                 // Don't care, we are awesome

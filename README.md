@@ -10,7 +10,7 @@ A working Prestashop 1.7.5 instance and composer (only for development).
 
 ## PrestaShop Day Presentation
 
-View presentation: (https://t.co/e97g0p7u33?amp=1)[https://t.co/e97g0p7u33?amp=1]
+View presentation: https://docs.google.com/presentation/d/1IePuou2D3g1asvGQm1Ni68VLyyaAYJ5Kth7cWOM2cq4/edit?usp=sharing
 
 ## Understanding exploits
 
